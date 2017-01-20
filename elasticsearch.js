@@ -18,8 +18,7 @@ function runQuery(query, callback) {
     });
 }
 
-
-
+// BookCount API.
 function booksCount(callback){
     var dbQuery = {
         index: INDEX_NAME,
@@ -40,6 +39,7 @@ function booksCount(callback){
         });
 }
 
+// Insertbook into object
 function insertBook(obj,id,cb){
     console.log(obj);
     client.index({
@@ -54,7 +54,7 @@ function insertBook(obj,id,cb){
     })
 }
 
-
+// GetAll books
 function getAllBooks(cb){
 
     var dbQuery = {
