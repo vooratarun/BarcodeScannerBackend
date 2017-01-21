@@ -9,6 +9,7 @@ var app = express();
 var cors = require('cors');
 app.use(cors());
 var dbOps = require("./elasticsearch.js");
+var amazon = require("./amazon.js");
 
 
 // startin app server.
@@ -28,6 +29,18 @@ app.get("/books",function(req,res){
     dbOps.getAllBooks(function(result){
        res.send(result);
     });
+
+});
+
+app.get("/book/:isbn",function(req,res){
+
+    console.log("on book isbn ");
+    var isbn = req.params.isbn + "";
+    console.log(isbn);
+    console.log(typeof  isbn);
+    amazon.findBookByISBN(isbn,function(result){
+        res.send(result);
+    })
 
 });
 
